@@ -27,25 +27,73 @@ body.addEventListener('dblclick', () => {
     body.style.backgroundColor = '#696969';
 })
 
+//3.5 stop propagation
+const changeTop = document.querySelector('.content-section');
+
+changeTop.addEventListener('dblclick', (e) => {
+    changeTop.style.color = 'green';
+    e.stopPropagation();
+});
+
+
 //4 - mouse over
 const goBig = document.querySelectorAll('.nav-link').forEach(el => {
     el.addEventListener('mouseover', (e) => {
-        e.target.style.color = 'red';
+        e.target.style.fontSize = '3rem';
 //4.5 - timeout
         setTimeout(function() {
-            e.target.style.color = '';
+            e.target.style.fontSize = '';
         }, 500);
     }, false);
 });
 
-//5 - 
+//5 - mousedown
+
+const bannerColor = document.querySelector('.main-navigation');
+
+bannerColor.addEventListener('mousedown', () => {
+    bannerColor.style.backgroundColor = '#696969';
+})
 
 
+// 6 - mousemove
 
-// goBig.addEventListener('mouseover', (e) => {
-//     e.target.style.color = 'red';
-// })
+const coolColor = document.querySelector('body');
 
+coolColor.addEventListener('mousemove', (e) => {
+    body.style.backgroundColor = 'rgb('+e.offsetX+', '+e.offsetY+', 80)';
+})
+
+// 7 - scroll 
+const bannerScroll = document.querySelector('.main-navigation');
+window.addEventListener('scroll', () => {
+    bannerScroll.style.backgroundColor = 'hotpink';
+  })
+
+
+// 8 - wheel
+
+const images = document.querySelectorAll("img");
+window.addEventListener("wheel", function() {
+  images.forEach(img => {
+    img.style.borderRadius = `${window.scrollY / 1}px`;
+  })
+})
+
+// 9 - resize
+
+const bottomColor = document.querySelector(".content-pick")
+window.addEventListener('resize', () => {
+    bottomColor.style.backgroundColor = 'green';
+})
+
+// 10 - select
+
+const footerColor = document.querySelector('.footer p');
+
+footerColor.addEventListener('drag', (e) => {
+    e.target.style.backgroundColor = 'red';
+})
 
 
 // prevent links
